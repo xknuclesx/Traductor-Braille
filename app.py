@@ -60,23 +60,6 @@ def text_to_braille(text, mirror=False):
     
     return ''.join(braille_text)
 
-def text_to_braille_mirror(text):
-    
-    num_detector = False
-    braille_text_mirror = ""
-    for char in text:
-        if char.isdigit():
-            num_detector = True
-        if char.lower() in braille_dict_mirror:
-            braille_text_mirror += braille_dict_mirror[char.lower()]
-            if char.isupper():
-              braille_text_mirror += '⠅'
-        else:
-            if char.isspace() and num_detector:
-              braille_text_mirror += '⠧ '
-            braille_text_mirror += char
-    return braille_text_mirror
-
 def braille_to_text(text):
     text_braille = ""
     num_detector = False  
