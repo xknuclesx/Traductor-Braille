@@ -91,16 +91,64 @@ def braille_to_text(braille):
 
     return ''.join(text)
     
-# Example usage
-text_example = "Hello, World! 123"
-braille_converted = text_to_braille(text_example)
-print("Braille:", braille_converted)
-print("Back to text:", braille_to_text(braille_converted))
+@app.route('/')
+def index():
+    """
+    Página principal.
+    """
+    return render_template('index.html')
 
-texto_a_convertir = "Hola, (esta es) ¿una? prueba: \" de; braile. 123\" y 4560"
-braile_a_convertir = "⠨⠓⠕⠇⠁⠂ ⠣⠑⠎⠞⠁ ⠑⠎⠜ ⠢⠥⠝⠁⠢ ⠏⠗⠥⠑⠃⠁⠒ ⠙⠑⠆ ⠃⠗⠁⠊⠇⠑⠄ ⠼⠁⠃⠉ ⠽ ⠼⠙⠑⠋⠚"
-resultado = text_to_braille(texto_a_convertir)
-print("Texto original:", texto_a_convertir)
-print("Texto en Braille:", resultado)
-print("Texto en Braille espejo:", text_to_braille_mirror(texto_a_convertir[::-1]))
-print("Braille en Texto:", braille_to_text(braile_a_convertir))
+@app.route('/translate', methods=['POST'])
+def translate():
+    """
+    Ruta de traducción.
+    """
+    text = request.form['text']
+    direction = request.form['direction']
+    result = handle_translation(text, direction)
+    return render_template('index.html', input_text=text, result=result, direction=direction)
+
+def handle_translation(text, direction):
+    """
+    Maneja la traducción según la dirección especificada.
+    
+    :param text: Texto de entrada.
+    :param direction: Dirección de traducción.
+    :return: Resultado de la traducción.
+    """
+    if not is_valid_text(text, direction):
+        return "Texto no válido para la dirección seleccionada."
+    
+    try:
+        if direction == 'text_to_braille':
+            return text_to_braille(text)
+        elif direction == 'braille_to_text':
+            return braille_to_text(text)
+        elif direction == 'text_to_braille_mirror':
+            return text_to_braille(text[::-1], mirror=True)
+        else:
+            return 'Dirección no válida'
+    except Exception as e:
+        return f'Error: {str(e)}'
+
+def is_valid_text(text, direction):
+    """
+    Valida el texto según la dirección de traducción.
+    
+    :param text: Texto de entrada.
+    :param direction: Dirección de traducción.
+    :return: True si el texto es válido, False en caso contrario.
+    """
+    valid_chars = set(braille_dict_alpha.keys()).union(set(braille_dict_number.keys()), set(' ,.;:()"¿?¡!'))
+    valid_braille_chars = set(braille_dict_alpha_inverse.keys()).union(set(braille_dict_number_inverse.keys()), set('⠼⠨'))
+
+    if direction in ['text_to_braille', 'text_to_braille_mirror']:
+        return all(char.lower() in valid_chars or char.isspace() for char in text)
+    elif direction == 'braille_to_text':
+        return all(char in valid_braille_chars or char.isspace() for char in text)
+    
+    return False
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
