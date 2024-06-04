@@ -60,51 +60,37 @@ def text_to_braille(text, mirror=False):
     
     return ''.join(braille_text)
 
-def braille_to_text(text):
-    text_braille = ""
-    num_detector = False  
-    upper_detector = False
-    for char in text:
-        if char == '⠼':
-            num_detector = True
-        elif char.isspace():
-            text_braille += char
-            num_detector = False
-        elif num_detector:
-            text_braille += braille_dict_number_inverse[char]
-        elif char == '⠨':
-            upper_detector = True
-        elif upper_detector:
-            text_braille += braille_dict_alpha_inverse[char].upper()
-            upper_detector = False
-        else:
-            text_braille += braille_dict_alpha_inverse[char]
-    return text_braille
-
 def braille_to_text(braille):
-    text = ""
+    """
+    Convierte Braille a texto.
+    
+    :param braille: Texto en Braille.
+    :return: Texto convertido.
+    """
+    text = []
     is_num = False
     is_upper = False
+
     for char in braille:
         if char == '⠼':
             is_num = True
         elif char == '⠨':
             is_upper = True
         elif char.isspace():
-            text += char
+            text.append(char)
             is_num = False
             is_upper = False
         else:
             if is_num:
-                text += braille_dict_number_inverse.get(char, '')
+                text.append(braille_dict_number_inverse.get(char, ''))
             elif is_upper:
-                text += braille_dict_alpha_inverse.get(char, '').upper()
+                text.append(braille_dict_alpha_inverse.get(char, '').upper())
             else:
-                text += braille_dict_alpha_inverse.get(char, '')
-            is_num = False
+                text.append(braille_dict_alpha_inverse.get(char, ''))
             is_upper = False
-    return text
 
+    return ''.join(text)
+    
 # Example usage
 text_example = "Hello, World! 123"
 braille_converted = text_to_braille(text_example)
