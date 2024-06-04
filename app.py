@@ -60,23 +60,6 @@ def text_to_braille(text, mirror=False):
     
     return ''.join(braille_text)
 
-def text_to_braille_mirror(text):
-    
-    num_detector = False
-    braille_text_mirror = ""
-    for char in text:
-        if char.isdigit():
-            num_detector = True
-        if char.lower() in braille_dict_mirror:
-            braille_text_mirror += braille_dict_mirror[char.lower()]
-            if char.isupper():
-              braille_text_mirror += '⠅'
-        else:
-            if char.isspace() and num_detector:
-              braille_text_mirror += '⠧ '
-            braille_text_mirror += char
-    return braille_text_mirror
-
 def braille_to_text(text):
     text_braille = ""
     num_detector = False  
@@ -97,35 +80,6 @@ def braille_to_text(text):
         else:
             text_braille += braille_dict_alpha_inverse[char]
     return text_braille
-
-texto_a_convertir = "Hola, (esta es) ¿una? Prueba: \" de; braile. 123\" y 4560"
-braile_a_convertir = "⠨⠓⠕⠇⠁⠂ ⠣⠑⠎⠞⠁ ⠑⠎⠜ ⠢⠥⠝⠁⠢ ⠏⠗⠥⠑⠃⠁⠒ ⠙⠑⠆ ⠃⠗⠁⠊⠇⠑⠄ ⠼⠁⠃⠉ ⠽ ⠼⠙⠑⠋⠚"
-resultado = text_to_braille(texto_a_convertir)
-print("Texto original:", texto_a_convertir)
-print("Texto en Braille:", resultado)
-print("Texto en Braille espejo:", text_to_braille_mirror(texto_a_convertir[::-1]))
-print("Braille en Texto:", braille_to_text(braile_a_convertir))
-
-def text_to_braille(text, mirror=False):
-    braille_text = ""
-    first_num = True  # Track the first number to prefix with number indicator
-    for char in text:
-        lower_char = char.lower()
-        if char.isdigit():
-            if first_num:
-                braille_text += '⠼'  # Number prefix in Braille
-                first_num = False
-            braille_text += braille_dict_number[char]
-        elif lower_char in (braille_dict_mirror if mirror else braille_dict_alpha):
-            if char.isupper():
-                braille_text += '⠨'  # Capital letter prefix in Braille
-            dict_used = braille_dict_mirror if mirror else braille_dict_alpha
-            braille_text += dict_used[lower_char]
-        else:
-            if char.isspace():
-                first_num = True  # Reset number tracking on space
-            braille_text += char
-    return braille_text
 
 def braille_to_text(braille):
     text = ""
