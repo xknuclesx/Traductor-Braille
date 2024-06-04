@@ -30,33 +30,35 @@ braille_dict_alpha_inverse = {value: key for key, value in braille_dict_alpha.it
 
 braille_dict_number_inverse = {value: key for key, value in braille_dict_number.items()}
 
-def text_to_braille(text):
+def text_to_braille(text, mirror=False):
     """
-    Convierte un texto en Braille utilizando el diccionario de letras a Braille.
-
-    Args:
-        text (str): El texto a convertir.
-
-    Returns:
-        braille_text (str): El texto convertido a Braille.
+    Convierte texto a Braille.
+    
+    :param text: Texto de entrada.
+    :param mirror: Si True, utiliza el diccionario mirror.
+    :return: Texto en Braille.
     """
-    braille_text = ""
-    first_num = True  # Variable para rastrear si es el primer número
+    braille_text = []
+    first_num = True  # Rastrea el primer número para prefijar con el indicador de número
+    dict_used = braille_dict_mirror if mirror else braille_dict_alpha
+
     for char in text:
+        lower_char = char.lower()
         if char.isdigit():
-              if first_num:
-                braille_text += '⠼'
+            if first_num:
+                braille_text.append('⠼')  # Prefijo de número en Braille
                 first_num = False
-              braille_text += braille_dict_number[char]
-        elif char.lower() in braille_dict_alpha:
+            braille_text.append(braille_dict_number[char])
+        elif lower_char in dict_used:
             if char.isupper():
-              braille_text += '⠨'
-            braille_text += braille_dict_alpha[char.lower()]
+                braille_text.append('⠨')  # Prefijo de letra mayúscula en Braille
+            braille_text.append(dict_used[lower_char])
         else:
             if char.isspace():
-              first_num = True
-            braille_text += char
-    return braille_text
+                first_num = True  # Restablece el seguimiento de números en espacio
+            braille_text.append(char)
+    
+    return ''.join(braille_text)
 
 def text_to_braille_mirror(text):
     
