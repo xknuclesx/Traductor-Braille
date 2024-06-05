@@ -1,3 +1,6 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
 
 braille_dict_alpha = {
     'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑', 'f': '⠋', 'g': '⠛',
@@ -27,7 +30,6 @@ braille_dict_mirror = {
 }
 
 braille_dict_alpha_inverse = {value: key for key, value in braille_dict_alpha.items()}
-
 braille_dict_number_inverse = {value: key for key, value in braille_dict_number.items()}
 
 def text_to_braille(text, mirror=False):
@@ -90,7 +92,7 @@ def braille_to_text(braille):
             is_upper = False
 
     return ''.join(text)
-    
+
 @app.route('/')
 def index():
     """
@@ -151,4 +153,3 @@ def is_valid_text(text, direction):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
