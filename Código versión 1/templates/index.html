@@ -68,7 +68,7 @@
                     </div>
                     <h3>Caracteres alfabéticos</h3>
                     <div class="keyboard-row-normals">
-                        {% for char, braille in [('a', '⠁'), ('b', '⠃'), ('c', '⠉'), ('d', '⠙'), ('e', '⠑'), ('f', '⠋'), ('g', '⠛'), ('h', '⠓'), ('i', '⠊'), ('j', '⠚'), ('k', '⠅'), ('l', '⠇'), ('m', '⠍'), ('n', '⠝'), ('o', '⠕'), ('p', '⠏'), ('q', '⠟'), ('r', '⠗'), ('s', '⠎'), ('t', '⠞'), ('u', '⠥'), ('v', '⠧'), ('w', '⠺'), ('x', '⠭'), ('y', '⠽'), ('z', '⠵')] %}
+                        {% for char, braille in [('Prefijo mayúsculas', '⠨'), ('a', '⠁'), ('b', '⠃'), ('c', '⠉'), ('d', '⠙'), ('e', '⠑'), ('f', '⠋'), ('g', '⠛'), ('h', '⠓'), ('i', '⠊'), ('j', '⠚'), ('k', '⠅'), ('l', '⠇'), ('m', '⠍'), ('n', '⠝'), ('o', '⠕'), ('p', '⠏'), ('q', '⠟'), ('r', '⠗'), ('s', '⠎'), ('t', '⠞'), ('u', '⠥'), ('v', '⠧'), ('w', '⠺'), ('x', '⠭'), ('y', '⠽'), ('z', '⠵')] %}
                         <div class="char-button">
                             <span class="char-ref">{{ char }}</span>
                             <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
