@@ -8,9 +8,9 @@
   - [app.py](Codigo-version-1/app.py)
 
 - [Documentos](Documentos)
-  - [Calidad de software](Documentos/Calidad-de-software/1-HistoriasDeUsuario.docx)
+  - [Calidad de software](Documentos/Calidad-de-software)
     1. [Historias de Usuario](Documentos/Calidad-de-software/1-HistoriasDeUsuario.docx)
-        - [Diagrama de Casos de Uso](Documentos/Calidad-de-software/DiagramaDeCasosDeUso.png)
+        - [Diagrama de Casos de Uso](Documentos/Calidad-de-software/CasosDeUso.png)
         - [Diagrama de Robustez CU1](Documentos/Calidad-de-software/DiagramaRobustezCU1.png)
         - [Diagrama de Robustez CU2](Documentos/Calidad-de-software/DiagramaRobustezCU2.png)
         - [Diagrama de Robustez CU3](Documentos/Calidad-de-software/DiagramaRobustezCU3.png)
@@ -23,6 +23,7 @@
     5. [Listado de Herramientas y Tecnologías de Desarrollo](Documentos/Calidad-de-software/5-ListadoDeHerramientas-TecnologiasDeDesarrollo.docx)
     6. [Pruebas Unitarias](Documentos/Calidad-de-software/6-PruebasUnitarias.docx)
       
+
   - [Construcción y evolución de software](Documentos/Construccion-y-evolucion-de-software)
     1. [Base de Datos de Conocimiento](Documentos/Construccion-y-evolucion-de-software/BaseDeDatosDeConocimiento.docx)
     2. [Documentación del ambiente de desarrollo](Documentos/Construccion-y-evolucion-de-software/DocumentacionDelAmbienteDeDesarrollo.docx)
