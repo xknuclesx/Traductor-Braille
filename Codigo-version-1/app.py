@@ -44,22 +44,37 @@ def text_to_braille(text, mirror=False):
     first_num = True  # Rastrea el primer número para prefijar con el indicador de número
     dict_used = braille_dict_mirror if mirror else braille_dict_alpha
 
-    for char in text:
-        lower_char = char.lower()
-        if char.isdigit():
-            if first_num:
-                braille_text.append('⠼')  # Prefijo de número en Braille
-                first_num = False
-            braille_text.append(braille_dict_number[char])
-        elif lower_char in dict_used:
-            if char.isupper():
-                braille_text.append('⠨')  # Prefijo de letra mayúscula en Braille
-            braille_text.append(dict_used[lower_char])
-        else:
-            if char.isspace():
-                first_num = True  # Restablece el seguimiento de números en espacio
-            braille_text.append(char)
-    
+    if not mirror:
+        for char in text:
+            lower_char = char.lower()
+            if char.isdigit():
+                if first_num:
+                    braille_text.append('⠼')  # Prefijo de número en Braille
+                    first_num = False
+                braille_text.append(braille_dict_number[char])
+            elif lower_char in dict_used:
+                if char.isupper():
+                    braille_text.append('⠨')  # Prefijo de letra mayúscula en Braille
+                braille_text.append(dict_used[lower_char])
+            else:
+                if char.isspace():
+                    first_num = True  # Restablece el seguimiento de números en espacio
+                braille_text.append(char)
+
+    if mirror:
+        num_detector = False
+        for char in text:
+            if char.isdigit():
+                num_detector = True
+            if char.lower() in dict_used:
+                braille_text.append(dict_used[char.lower()])
+                if char.isupper():
+                  braille_text.append('⠅')
+            if char.isspace() and num_detector:
+                braille_text.append('⠧ ')
+                num_detector = False
+                braille_text.append(' ')
+
     return ''.join(braille_text)
 
 def braille_to_text(braille):
@@ -105,7 +120,7 @@ def translate():
     """
     Ruta de traducción.
     """
-    text = request.form['text']
+    text = ' ' + request.form['text']
     direction = request.form['direction']
     result = handle_translation(text, direction)
     return render_template('index.html', input_text=text, result=result, direction=direction)
@@ -137,7 +152,7 @@ def is_valid_text(text, direction):
     """
     Valida el texto según la dirección de traducción.
     
-    :param text: Texto de entrada.
+    :param text: Texto de entrada.  
     :param direction: Dirección de traducción.
     :return: True si el texto es válido, False en caso contrario.
     """
