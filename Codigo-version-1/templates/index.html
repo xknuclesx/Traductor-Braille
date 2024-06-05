@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor Braille</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        function insertCharacter(character) {
+            var textArea = document.getElementById('input-text');
+            textArea.value += character;
+        }
+
+        function selectDirection(direction) {
+            var directions = ['text_to_braille', 'braille_to_text', 'text_to_braille_mirror'];
+            directions.forEach(function(dir) {
+                document.getElementById(dir).classList.remove('selected');
+            });
+            document.getElementById(direction).classList.add('selected');
+            document.getElementById('direction').value = direction;
+            document.getElementById('input-text').value = '';
+        }
+    </script>
+    <style>
+        .selected {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Traductor Braille</h1>
+        <div class="instructions">
+            <h2>Instrucciones</h2>
+            <p>1. Presione el método de traducción que requiere.</p>
+            <p>2. Ingrese el texto a traducir.</p>
+            <p>3. Presione el botón "Traducir".</p>
+            <p>4. El resultado se mostrará en la pantalla en la parte derecha del área de texto.</p>
+        </div>
+        <form action="/translate" method="post">
+            <input type="hidden" id="direction" name="direction" value="{{ direction }}">
+            <div class="buttons">
+                <button type="button" id="text_to_braille" onclick="selectDirection('text_to_braille')">Texto a Braille</button>
+                <button type="button" id="braille_to_text" onclick="selectDirection('braille_to_text')">Braille a Texto</button>
+                <button type="button" id="text_to_braille_mirror" onclick="selectDirection('text_to_braille_mirror')">Texto a Braille Espejo</button>
+            </div>
+            <div class="input-result-container">
+                <textarea id="input-text" name="text" placeholder="Ingresa un texto, clic en el Botón">{{ input_text }}</textarea>
+                <div class="result">
+                    <h2>Resultado:</h2>
+                    <p>{{ result }}</p>
+                </div>
+            </div>
+            <button type="submit" class="translate-button">Traducir</button>
+        </form>
+        <div class="keyboard">
+            <h2>Teclado Braille</h2>
+            <div class="keyboard-container">
+                <div class="keyboard-rows">
+                    <h3>Caracteres especiales</h3>
+                    <div class="keyboard-row-specials">
+                        {% for char, braille in [('á', '⠷'), ('é', '⠮'), ('í', '⠌'), ('ó', '⠬'), ('ú', '⠾'), ('ü', '⠳'), ('ñ', '⠻'), (',', '⠂'), ('.', '⠄')] %}
+                        <div class="char-button">
+                            <span class="char-ref">{{ char }}</span>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <h3>Caracteres alfabéticos</h3>
+                    <div class="keyboard-row-normals">
+                        {% for char, braille in [('Prefijo mayúsculas', '⠨'), ('a', '⠁'), ('b', '⠃'), ('c', '⠉'), ('d', '⠙'), ('e', '⠑'), ('f', '⠋'), ('g', '⠛'), ('h', '⠓'), ('i', '⠊'), ('j', '⠚'), ('k', '⠅'), ('l', '⠇'), ('m', '⠍'), ('n', '⠝'), ('o', '⠕'), ('p', '⠏'), ('q', '⠟'), ('r', '⠗'), ('s', '⠎'), ('t', '⠞'), ('u', '⠥'), ('v', '⠧'), ('w', '⠺'), ('x', '⠭'), ('y', '⠽'), ('z', '⠵')] %}
+                        <div class="char-button">
+                            <span class="char-ref">{{ char }}</span>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="keyboard-rows-numbers">
+                    <h3>Caracteres numéricos</h3>
+                    <div class="keyboard-row-numbers">
+                        {% for char, braille in [('Prefijo de un número', '⠼'), ('1', '⠁'), ('2', '⠃'), ('3', '⠉'), ('4', '⠙'), ('5', '⠑'), ('6', '⠋'), ('7', '⠛'), ('8', '⠓'), ('9', '⠊'), ('0', '⠚') ] %}
+                        <div class="char-button">
+                            <span class="char-ref">{{ char }}</span>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
