@@ -31,8 +31,8 @@
     3. [Flujo de Trabajo](Documentos/Construccion-y-evolucion-de-software/FlujoDeTrabajo.pdf)
     4. [La trazabilidad de cada uno de los artefactos](Documentos/Construccion-y-evolucion-de-software/TrazabilidadDeLosArtefactos.pdf)
     5. [Manual de usuario](Documentos/Construccion-y-evolucion-de-software/ManualDeUsuario.pdf)
-    6. [Manual de instalación-Configuración](Documentos/Construccion-y-evolucion-de-software/ManualDeInstalacionConfiguracion.pdf)
-    7. [Manual de programador](Documentos/Construccion-y-evolucion-de-software/ManualDeProgramador.pdf)
+    6. [Manual de instalación-Configuración](Documentos/Construccion-y-evolucion-de-software/ManualDeInstalacionConfiguración.pdf)
+    7. [Manual de programador](Documentos/Construccion-y-evolucion-de-software/ManualDelProgramador.pdf)
     8. [Notas de Versión](Documentos/Construccion-y-evolucion-de-software/NotasDeVersión.pdf)
 
 
