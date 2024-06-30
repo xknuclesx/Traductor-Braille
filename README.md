@@ -4,6 +4,7 @@
 
 - [Código versión1](Codigo-version-1)
   - [static/css](Codigo-version-1/static/css)
+  - [static/js](Codigo-version-1/static/js)
   - [templates](Codigo-version-1/templates)
   - [app.py](Codigo-version-1/app.py)
 
