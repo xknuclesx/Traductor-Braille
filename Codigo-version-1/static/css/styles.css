@@ -1,32 +1,48 @@
 body {
-    background-color: #2c2f33;
-    color: white;
+    background-color: #ffffff;
+    color: black;
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 20px;
     margin: 0;
 }
 
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
 .container {
     max-width: 900px;
     margin: 0 auto;
-    background-color: #23272a;
+    background-color: #f4f4f4;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-h1 {
+body.dark-mode .container {
+    background-color: #23272a;
+}
+
+h1, h2, h3 {
+    color: #000000;
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
     color: #ffffff;
-    margin-bottom: 20px;
 }
 
 .instructions {
     text-align: left;
     margin-bottom: 20px;
-    background-color: #2c2f33;
+    background-color: #f4f4f4;
     padding: 10px;
     border-radius: 8px;
+}
+
+body.dark-mode .instructions {
+    background-color: #2c2f33;
 }
 
 textarea {
@@ -36,9 +52,14 @@ textarea {
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #314cae;
+    background-color: #f4f4f4;
+    color: black;
+    resize: none;
+}
+
+body.dark-mode textarea {
     background-color: #2c2f33;
     color: white;
-    resize: none;
 }
 
 button {
@@ -53,7 +74,7 @@ button {
 }
 
 button:hover {
-    background-color: #314cae;
+    background-color: #1e3a8a;
 }
 
 .translate-button {
@@ -67,9 +88,9 @@ button:hover {
 
 .input-result-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px; /* Adds space between the input and result boxes */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
 }
 
 textarea {
@@ -78,12 +99,16 @@ textarea {
 
 .result {
     flex: 1;
-    background-color: #2c2f33;
+    background-color: #f4f4f4;
     padding: 5px;
     border-radius: 8px;
     border: 1px solid #314cae;
     text-align: left;
-    white-space: initial; /* Preserve spaces and line breaks */
+    white-space: initial;
+}
+
+body.dark-mode .result {
+    background-color: #2c2f33;
 }
 
 .result h2 {
@@ -96,8 +121,8 @@ textarea {
 
 .keyboard-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .keyboard-rows,
@@ -107,17 +132,11 @@ textarea {
 }
 
 .keyboard-row-specials,
-.keyboard-row-normals {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-}
-
+.keyboard-row-normals,
 .keyboard-row-numbers {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
@@ -140,17 +159,22 @@ textarea {
 }
 
 .char-button button:hover {
-    background-color: #314cae;
+    background-color: #1e3a8a;
 }
 
 .char-ref {
     font-size: 12px;
+    color: #000000;
+}
+
+body.dark-mode .char-ref {
     color: #ffffff;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -158,12 +182,37 @@ textarea {
     background-color: #4CAF50 !important;
 }
 
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+.keyboard {
+    display: none;
+}
+
 h3 {
-    text-align: left;
+    text-align: center;
     width: 100%;
     margin: 10px 0 5px;
 }
 
 h3.numbers {
-    text-align: right;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (min-width: 600px) {
+    .input-result-container {
+        flex-direction: row;
+    }
+
+    .keyboard-container {
+        flex-direction: row;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
 }
