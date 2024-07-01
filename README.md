@@ -67,6 +67,7 @@ Esta aplicación convierte texto en Braille y viceversa, utilizando varios dicci
 - Interfaz web intuitiva
 - Descarga de la traducción a PDF
 - Descarga de la traducción a PNG
+- Copiar texto traducido
 
 ## Requisitos del Entorno
 
