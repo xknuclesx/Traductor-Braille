@@ -173,9 +173,10 @@ body.dark-mode .char-ref {
 
 .buttons {
     display: flex;
-    flex-direction: column;
+    justify-content: center; 
     align-items: center;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .selected {
@@ -186,7 +187,6 @@ body.dark-mode .char-ref {
     opacity: 0.5;
     pointer-events: none;
 }
-
 
 .keyboard {
     display: none;
