@@ -10,7 +10,7 @@
       - [app.py](Codigo/Version-1/app.py)
 
 ### [Documentos](Documentos)
-   - [Fase 1](Documentos/'Fase 1 (Demo)').
+   - [Fase 1](Documentos/Fase%201%20(Demo)).
        - [Calidad de software](Documentos/Fase%201%20(Demo)/Calidad-de-software)
         1. [Historias de Usuario](Documentos/Fase%201%20(Demo)/Calidad-de-software/1-HistoriasDeUsuario.docx)
             - [Diagrama de Casos de Uso](Documentos/Fase%201%20(Demo)/Calidad-de-software/CasosDeUso.png)
@@ -36,20 +36,22 @@
         6. [Manual de instalación-Configuración](Documentos/Fase%201%20(Demo)/Construccion-y-evolucion-de-software/ManualDeInstalacionConfiguración.pdf)
         7. [Manual de programador](Documentos/Fase%201%20(Demo)/Construccion-y-evolucion-de-software/ManualDelProgramador.pdf)
         8. [Notas de Versión](Documentos/Fase%201%20(Demo)/Construccion-y-evolucion-de-software/NotasDeVersión.pdf)
-   - [Version 1](Documentos/Versión%21.0).
-      - [Calidad de software](Documentos/Versión%21.0/Calidad-de-software)
-        1. [Historias de Usuario](Documentos/Versión%21.0/Calidad-de-software/1-HistoriasDeUsuario.docx)
-            - [Diagrama de Casos de Uso](Documentos/Versión%21.0/Calidad-de-software/CasosDeUso.png)
-            - [Diagrama de Robustez CU1](Documentos/Versión%21.0/Calidad-de-software/DiagramaRobustezCU1.png)
-            - [Diagrama de Robustez CU2](Documentos/Versión%21.0/Calidad-de-software/DiagramaRobustezCU2.png)
-            - [Diagrama de Robustez CU3](Documentos/Versión%21.0/Calidad-de-software/DiagramaRobustezCU3.png)
-            - [Diagrama de Actividades CU1](Documentos/Versión%21.0/Calidad-de-software/DiagramaDeActividadCU1.png)
-            - [Diagrama de Actividades CU2](Documentos/Versión%21.0/Calidad-de-software/DiagramaDeActividadCU2.png)  
-            - [Diagrama de Actividades CU3](Documentos/Versión%21.0/Calidad-de-software/DiagramaDeActividadCU3.png)
-        2. [Diseño de Casos de Prueba](Documentos/Versión%21.0/Calidad-de-software/diseño-de-casos-de-prueba)
-        3. [Modelo Arquitectónico](Documentos/Versión%21.0/Calidad-de-software/3-ModeloArquitectonico.docx)
-        4. [Diseño del Producto](Documentos/Versión%21.0/Calidad-de-software/4-DiseñoDelProducto.docx)
-        5. [Listado de Herramientas y Tecnologías de Desarrollo](Documentos/Versión%21.0/Calidad-de-software/5-ListadoDeHerramientas-TecnologiasDeDesarrollo.docx)
+
+           
+   - [Version 1](Documentos/Versi%C3%B3n%201.0).
+      - [Calidad de software](Documentos/Versi%C3%B3n%201.0/Calidad-de-software)
+        1. [Historias de Usuario](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/1-HistoriasDeUsuario.docx)
+            - [Diagrama de Casos de Uso](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/CasosDeUso.png)
+            - [Diagrama de Robustez CU1](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/DiagramaRobustezCU1.png)
+            - [Diagrama de Robustez CU2](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/DiagramaRobustezCU2.png)
+            - [Diagrama de Robustez CU3](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/DiagramaRobustezCU3.png)
+            - [Diagrama de Actividades CU1](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/DiagramaDeActividadCU1.png)
+            - [Diagrama de Actividades CU2](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/DiagramaDeActividadCU2.png)  
+            - [Diagrama de Actividades CU3](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/DiagramaDeActividadCU3.png)
+        2. [Diseño de Casos de Prueba](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/diseño-de-casos-de-prueba)
+        3. [Modelo Arquitectónico](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/3-ModeloArquitectonico.docx)
+        4. [Diseño del Producto](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/4-DiseñoDelProducto.docx)
+        5. [Listado de Herramientas y Tecnologías de Desarrollo](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/5-ListadoDeHerramientas-TecnologiasDeDesarrollo.docx)
       
 
 ## Descripción del Proyecto
