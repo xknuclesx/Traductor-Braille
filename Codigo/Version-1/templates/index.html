@@ -9,6 +9,7 @@
     <!-- Bibliotecas externas de JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body class="dark-mode">
     <div class="container">
@@ -29,33 +30,33 @@
 
             <!-- Botones de selección de dirección de traducción -->
             <div class="buttons">
-                <button type="button" id="text_to_braille" onclick="selectDirection('text_to_braille')">Texto a Braille</button>
-                <button type="button" id="braille_to_text" onclick="selectDirection('braille_to_text')">Braille a Texto</button>
-                <button type="button" id="text_to_braille_mirror" onclick="selectDirection('text_to_braille_mirror')">Texto a Braille Espejo</button>
+                <button type="button" id="text_to_braille" onclick="selectDirection('text_to_braille')" tabindex="0">Texto a Braille</button>
+                <button type="button" id="braille_to_text" onclick="selectDirection('braille_to_text')" tabindex="0">Braille a Texto</button>
+                <button type="button" id="text_to_braille_mirror" onclick="selectDirection('text_to_braille_mirror')" tabindex="0">Texto a Braille Espejo</button>
             </div>
 
             <!-- Botones de utilidades -->
             <div class="utility-buttons">
-                <button type="button" onclick="copyText()">Copiar Texto</button>
-                <button type="button" onclick="clearText()">Borrar Texto</button>
-                <button type="button" id="darkModeButton" onclick="toggleDarkMode()">Modo Claro</button>
-                <button type="button" onclick="zoomIn()">Zoom In</button>
-                <button type="button" onclick="zoomOut()">Zoom Out</button>
+                <button type="button" onclick="copyText()" tabindex="0">Copiar Texto</button>
+                <button type="button" onclick="clearText()" tabindex="0">Borrar Texto</button>
+                <button type="button" id="darkModeButton" onclick="toggleDarkMode()" tabindex="0">Modo Claro</button>
+                <button type="button" onclick="zoomIn()" tabindex="0">Zoom In</button>
+                <button type="button" onclick="zoomOut()" tabindex="0">Zoom Out</button>
             </div>
 
             <!-- Área de texto de entrada y resultado -->
             <div class="input-result-container disabled">
-                <textarea id="input-text" name="text" placeholder="Ingresa un texto, clic en el Botón">{{ input_text }}</textarea>
+                <textarea id="input-text" name="text" placeholder="Ingresa un texto, clic en el Botón" tabindex="0">{{ input_text }}</textarea>
                 <div class="result">
                     <h2 class="result-title">Resultado:</h2>
-                    <p id="resultText">{{ result }}</p>
+                    <p id="resultText" tabindex="0">{{ result }}</p>
                 </div>
             </div>
 
             <!-- Botones para traducir y descargar -->
-            <button type="button" class="translate-button" onclick="submitForm()">Traducir</button>
-            <button type="button" id="downloadPDFButton" class="hidden" onclick="downloadPDF()">Descargar PDF</button>
-            <button type="button" id="downloadImageButton" class="hidden" onclick="downloadImage()">Descargar Imagen</button>
+            <button type="button" class="translate-button" onclick="submitForm()" tabindex="0">Traducir</button>
+            <button type="button" id="downloadPDFButton" class="hidden" onclick="downloadPDF()" tabindex="0">Descargar PDF</button>
+            <button type="button" id="downloadImageButton" class="hidden" onclick="downloadImage()" tabindex="0">Descargar Imagen</button>
         </form>
 
         <!-- Sección de teclado Braille -->
@@ -66,32 +67,32 @@
                     <h3>Caracteres especiales</h3>
                     <div class="keyboard-row-specials">
                         {% for char, braille in [('á', '⠷'), ('é', '⠮'), ('í', '⠌'), ('ó', '⠬'), ('ú', '⠾'), ('ü', '⠳'), ('ñ', '⠻'), (',', '⠂'), ('.', '⠄')] %}
-                        <div class="char-button">
+                        <div class="char-button" tabindex="0">
                             <span class="char-ref">{{ char }}</span>
-                            <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')" tabindex="0">{{ braille }}</button>
                         </div>
                         {% endfor %}
                     </div>
                     <h3>Caracteres alfabéticos</h3>
                     <div class="keyboard-row-normals">
                         {% for char, braille in [('Prefijo mayúsculas', '⠨'), ('a', '⠁'), ('b', '⠃'), ('c', '⠉'), ('d', '⠙'), ('e', '⠑'), ('f', '⠋'), ('g', '⠛'), ('h', '⠓'), ('i', '⠊'), ('j', '⠚'), ('k', '⠅'), ('l', '⠇'), ('m', '⠍'), ('n', '⠝'), ('o', '⠕'), ('p', '⠏'), ('q', '⠟'), ('r', '⠗'), ('s', '⠎'), ('t', '⠞'), ('u', '⠥'), ('v', '⠧'), ('w', '⠺'), ('x', '⠭'), ('y', '⠽'), ('z', '⠵')] %}
-                        <div class="char-button">
+                        <div class="char-button" tabindex="0">
                             <span class="char-ref">{{ char }}</span>
-                            <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')" tabindex="0">{{ braille }}</button>
                         </div>
                         {% endfor %}
                     </div>
                     <h3>Caracteres numéricos</h3>
                     <div class="keyboard-row-numbers">
                         {% for char, braille in [('Prefijo de un número', '⠼'), ('1', '⠁'), ('2', '⠃'), ('3', '⠉'), ('4', '⠙'), ('5', '⠑'), ('6', '⠋'), ('7', '⠛'), ('8', '⠓'), ('9', '⠊'), ('0', '⠚')] %}
-                        <div class="char-button">
+                        <div class="char-button" tabindex="0">
                             <span class="char-ref">{{ char }}</span>
-                            <button type="button" onclick="insertCharacter('{{ braille }}')">{{ braille }}</button>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')" tabindex="0">{{ braille }}</button>
                         </div>
                         {% endfor %}
-                        <div class="char-button">
+                        <div class="char-button" tabindex="0">
                             <span class="char-ref">Espacio</span>
-                            <button type="button" onclick="insertCharacter(' ')">␣</button>
+                            <button type="button" onclick="insertCharacter(' ')" tabindex="0">␣</button>
                         </div>
                     </div>
                 </div>
