@@ -69,4 +69,3 @@ Esta aplicación convierte texto en Braille y viceversa, utilizando varios dicci
 - *Flask 1.1.2+*
 
 Créditos: Fastbear Technologies
-Autores: Erika Anrrango, Johana Huaraca, Johan Illicachi, Adrián Paguay, Cesar Soria
