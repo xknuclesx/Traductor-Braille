@@ -20,6 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Añadir evento de filtro de caracteres Braille
     inputText.addEventListener('input', filterBrailleCharacters);
+    
+    // Habilitar o deshabilitar el botón de traducir según el contenido del área de texto
+    inputText.addEventListener('input', toggleTranslateButton);
+
+    // Función para habilitar o deshabilitar el botón de traducir
+   function toggleTranslateButton() {
+    if (inputText.value.trim() === '') {
+        translateButton.classList.add('disabled');
+        translateButton.disabled = true;
+    } else {
+        translateButton.classList.remove('disabled');
+        translateButton.disabled = false;
+    }
+}
+
+// Llamar a la función inicialmente para configurar el estado del botón de traducir
+toggleTranslateButton();
 });
 
 // Filtra caracteres Braille permitidos
@@ -35,12 +52,14 @@ function filterBrailleCharacters(event) {
     }
 
     event.target.value = filteredText;
+    toggleTranslateButton(); // Actualizar el estado del botón de traducir
 }
 
 // Inserta un carácter Braille en el área de texto
 function insertCharacter(character) {
     var textArea = document.getElementById('input-text');
     textArea.value += character;
+    toggleTranslateButton(); // Actualizar el estado del botón de traducir
 }
 
 // Envía el formulario de traducción
@@ -70,6 +89,26 @@ function submitForm() {
         document.getElementById('downloadImageButton').style.display = 'block';
     })
     .catch(error => console.error('Error:', error));
+}
+
+// Inserta un carácter Braille en el área de texto
+function insertCharacter(character) {
+    var textArea = document.getElementById('input-text');
+    textArea.value += character;
+    toggleTranslateButton(); // Actualizar el estado del botón de traducir
+}
+
+// Función para habilitar o deshabilitar el botón de traducir
+function toggleTranslateButton() {
+    var inputText = document.getElementById('input-text');
+    var translateButton = document.querySelector('.translate-button');
+    if (inputText.value.trim() === '') {
+        translateButton.classList.add('disabled');
+        translateButton.disabled = true;
+    } else {
+        translateButton.classList.remove('disabled');
+        translateButton.disabled = false;
+    }
 }
 
 
@@ -106,6 +145,8 @@ function selectDirection(direction) {
     textArea.value = '';
     utilityButtons.style.display = 'block'; // Mostrar botones de utilidades
     translateButton.style.display = 'block';
+    translateButton.disabled = true; // Deshabilitar botón de traducir
+    translateButton.classList.add('disabled'); // Añadir clase 'disabled' al botón de traducir
     document.getElementById('downloadPDFButton').classList.add('hidden'); // Ocultar botón de descarga de PDF
     document.getElementById('downloadPDFButton').style.display = 'none';
     document.getElementById('downloadImageButton').classList.add('hidden'); // Ocultar botón de descarga de imagen
@@ -113,23 +154,32 @@ function selectDirection(direction) {
 
     if (direction === 'braille_to_text') {
         textArea.addEventListener('input', filterBrailleCharacters); // Habilitar el filtro de caracteres Braille
-    } else {
-        textArea.removeEventListener('input', filterBrailleCharacters); // Deshabilitar el filtro de caracteres Braille
     }
+
+    toggleTranslateButton(); // Actualizar el estado del botón de traducir
 }
+
 
 
 // Copia el texto del resultado al portapapeles
 function copyText() {
-    var resultText = document.querySelector('.result p').innerText;
-    navigator.clipboard.writeText(resultText).then(() => {
-        alert('Texto copiado al portapapeles');
-    });
+    var resultTextElement = document.querySelector('.result p');
+    var resultText = resultTextElement.innerText;
+
+    if (resultText.trim() !== '') {
+        navigator.clipboard.writeText(resultText).then(() => {
+            alert('Texto copiado al portapapeles');
+        });
+    } else {
+        alert('No hay texto para copiar');
+    }
 }
+
 
 // Borra el texto del área de entrada
 function clearText() {
     document.getElementById('input-text').value = '';
+    toggleTranslateButton(); // Actualizar el estado del botón de traducir
 }
 
 // Alterna el modo oscuro/claro
@@ -144,7 +194,6 @@ function toggleDarkMode() {
         darkModeButton.innerText = 'Modo Oscuro';
     }
 }
-
 // Descarga el resultado como un PDF
 async function downloadPDF() {
     var resultTextElement = document.getElementById('resultText');
@@ -213,7 +262,7 @@ function downloadImage() {
     html2canvas(tempContainer).then(canvas => {
         var link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');
-                link.download = 'resultado.png';
+        link.download = 'resultado.png';
         link.click();
         document.body.removeChild(tempContainer);
     }).catch(error => console.error('Error generating image:', error));
@@ -229,7 +278,6 @@ function zoomOut() {
     document.body.style.zoom = (parseFloat(document.body.style.zoom) || 1) - 0.1;
 }
 
-// Manejador del envío del formulario
 // Manejador del envío del formulario
 document.getElementById('translateForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -251,4 +299,3 @@ document.getElementById('translateForm').addEventListener('submit', function(eve
     })
     .catch(error => console.error('Error:', error));
 });
-
