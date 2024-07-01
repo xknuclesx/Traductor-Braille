@@ -72,6 +72,7 @@ function submitForm() {
     .catch(error => console.error('Error:', error));
 }
 
+
 // Selecciona la dirección de la traducción y ajusta la interfaz
 function selectDirection(direction) {
     var directions = ['text_to_braille', 'braille_to_text', 'text_to_braille_mirror'];
@@ -92,11 +93,13 @@ function selectDirection(direction) {
     resultText.innerText = '';
 
     if (direction === 'braille_to_text') {
+        textArea.removeEventListener('input', filterBrailleCharacters); // Deshabilitar el filtro de caracteres Braille
         textArea.removeAttribute('disabled'); // Asegúrate de que el área de texto no esté deshabilitada
         brailleKeyboard.style.display = 'block';
     } else {
-        textArea.removeAttribute('disabled');
+        textArea.removeAttribute('disabled'); // Asegúrate de que el área de texto no esté deshabilitada
         brailleKeyboard.style.display = 'none';
+        textArea.removeEventListener('input', filterBrailleCharacters); // Deshabilitar el filtro de caracteres Braille
     }
 
     inputContainer.classList.remove('disabled');
@@ -107,7 +110,14 @@ function selectDirection(direction) {
     document.getElementById('downloadPDFButton').style.display = 'none';
     document.getElementById('downloadImageButton').classList.add('hidden'); // Ocultar botón de descarga de imagen
     document.getElementById('downloadImageButton').style.display = 'none';
+
+    if (direction === 'braille_to_text') {
+        textArea.addEventListener('input', filterBrailleCharacters); // Habilitar el filtro de caracteres Braille
+    } else {
+        textArea.removeEventListener('input', filterBrailleCharacters); // Deshabilitar el filtro de caracteres Braille
+    }
 }
+
 
 // Copia el texto del resultado al portapapeles
 function copyText() {
@@ -203,7 +213,7 @@ function downloadImage() {
     html2canvas(tempContainer).then(canvas => {
         var link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');
-        link.download = 'resultado.png';
+                link.download = 'resultado.png';
         link.click();
         document.body.removeChild(tempContainer);
     }).catch(error => console.error('Error generating image:', error));
@@ -219,6 +229,7 @@ function zoomOut() {
     document.body.style.zoom = (parseFloat(document.body.style.zoom) || 1) - 0.1;
 }
 
+// Manejador del envío del formulario
 // Manejador del envío del formulario
 document.getElementById('translateForm').addEventListener('submit', function(event) {
     event.preventDefault();
