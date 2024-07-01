@@ -178,6 +178,14 @@ body.dark-mode .char-ref {
     margin-bottom: 20px;
     gap: 10px;
 }
+button.disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Otros estilos permanecen sin cambios */
+
 
 .selected {
     background-color: #4CAF50 !important;
