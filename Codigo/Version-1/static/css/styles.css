@@ -215,4 +215,13 @@ h3.numbers {
     .buttons {
         flex-direction: row;
     }
+    
+}
+/* Estilos de enfoque */
+button:focus, 
+textarea:focus, 
+.char-button:focus, 
+input:focus {
+    outline: 2px solid #1e3a8a;
+    outline-offset: 2px;
 }
