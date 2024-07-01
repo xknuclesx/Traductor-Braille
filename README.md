@@ -1,6 +1,6 @@
 # Braille Translator Application
 
-## Indice
+## Índice
 
 ### [Código](Codigo)
   - [Versión 1](Codigo/Version-1)
@@ -38,7 +38,7 @@
         8. [Notas de Versión](Documentos/Fase%201%20(Demo)/Construccion-y-evolucion-de-software/NotasDeVersión.pdf)
 
            
-   - [Version 1](Documentos/Versi%C3%B3n%201.0).
+   - [Versión 1](Documentos/Versi%C3%B3n%201.0).
       - [Calidad de software](Documentos/Versi%C3%B3n%201.0/Calidad-de-software)
         1. [Historias de Usuario](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/1-HistoriasDeUsuario.docx)
             - [Diagrama de Casos de Uso](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/CasosDeUso.png)
