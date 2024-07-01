@@ -3,11 +3,11 @@
 ## Indice
 
 ### [Código](Codigo)
-  - [Versión 1](Version-1)
-      - [static/css](Codigo-version-1/static/css)
-      - [static/js](Codigo-version-1/static/js)
-      - [templates](Codigo-version-1/templates)
-      - [app.py](Codigo-version-1/app.py)
+  - [Versión 1](Codigo/Version-1)
+      - [static/css](Codigo/Version-1/static/css)
+      - [static/js](Codigo/Version-1/static/js)
+      - [templates](Codigo/Version-1/templates)
+      - [app.py](Codigo/Version-1/app.py)
 
 ### [Documentos](Documentos)
    - [Fase 1](Documentos/Fase1(Demo)).
