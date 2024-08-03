@@ -40,13 +40,13 @@
      
       - [Construcción y evolución de software](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software)
         1. [Resultados Evaluación](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion)
-           i. [Solicitud de cambio 1](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_1.xlsx)
-           ii. [Solicitud de cambio 2](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_2.xlsx)
-           iii. [Solicitud de cambio 3](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_3.xlsx)
-           iv. [Solicitud de cambio 4](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_4.xlsx)
-           v. [Solicitud de cambio 5](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_5.xlsx)
-           vi. [Solicitud de cambio 6](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_6.xlsx)
-           vii. [Solicitud de cambio 7](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_7.xlsx)
+           1. [Solicitud de cambio 1](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_1.xlsx)
+           2. [Solicitud de cambio 2](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_2.xlsx)
+           3. [Solicitud de cambio 3](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_3.xlsx)
+           4. [Solicitud de cambio 4](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_4.xlsx)
+           5. [Solicitud de cambio 5](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_5.xlsx)
+           6. [Solicitud de cambio 6](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_6.xlsx)
+           7. [Solicitud de cambio 7](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR _Formato_7.xlsx)
       
 
 ## Descripción del Proyecto
