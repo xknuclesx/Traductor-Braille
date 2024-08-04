@@ -1,4 +1,3 @@
-
 from source.dictionary import *
 
 def is_valid_text(text, direction):
@@ -9,8 +8,8 @@ def is_valid_text(text, direction):
     :param direction: Dirección de traducción.
     :return: True si el texto es válido, False en caso contrario.
     """
-    valid_chars = set(braille_dict_alpha.keys()).union(set(braille_dict_number.keys())).union(set(braille_dict_symbol.keys()))
-    valid_braille_chars = set(braille_dict_alpha_inverse.keys()).union(set(braille_dict_number_inverse.keys()), set('⠼⠨'))
+    valid_chars = set(braille_dict.keys())
+    valid_braille_chars = set(braille_dict_alpha_inverse.keys()).union(set(braille_dict_number_inverse.keys()).union(set(braille_dict_symbol_inverse.keys())), set('⠼⠨'))
 
     if direction     in ['text_to_braille', 'text_to_braille_mirror']:
         return all(char.lower() in valid_chars or char.isspace() for char in text)
@@ -29,7 +28,7 @@ def text_to_braille(text, mirror=False):
     """
     braille_text = []
     first_num = True  # Rastrea el primer número para prefijar con el indicador de número
-    dict_used = braille_dict_mirror if mirror else braille_dict_alpha
+    dict_used = braille_dict_mirror if mirror else braille_dict
 
     if not mirror:
         for char in text:
@@ -38,7 +37,7 @@ def text_to_braille(text, mirror=False):
                 if first_num:
                     braille_text.append('⠼')  # Prefijo de número en Braille
                     first_num = False
-                braille_text.append(braille_dict_number[char])
+                braille_text.append(dict_used[char])
             elif lower_char in dict_used:
                 if char.isupper():
                     braille_text.append('⠨')  # Prefijo de letra mayúscula en Braille
@@ -76,6 +75,7 @@ def braille_to_text(braille):
     text = []
     is_num = False
     is_upper = False
+    oppened_simbol = False
 
     for char in braille:
         if char == '⠼':
@@ -86,13 +86,29 @@ def braille_to_text(braille):
             text.append(char)
             is_num = False
             is_upper = False
-        else:
-            if is_num:
-                text.append(braille_dict_number_inverse.get(char, ''))
-            elif is_upper:
-                text.append(braille_dict_alpha_inverse.get(char, '').upper())
+        elif char == '⠖':
+            if oppened_simbol:
+                text.append('!')
+                oppened_simbol = False
             else:
-                text.append(braille_dict_alpha_inverse.get(char, ''))
+                text.append('¡')
+                oppened_simbol = True
+        elif char == '⠢':
+            if oppened_simbol:
+                text.append('?')
+                oppened_simbol = False
+            else:
+                text.append('¿')
+                oppened_simbol = True
+        if is_num:
+                text.append(braille_dict_number_inverse[char])
+        elif is_upper:
+                text.append(braille_dict_alpha_inverse[char].upper())
+        else:
+            if char in braille_dict_symbol_inverse:
+                text.append(braille_dict_symbol_inverse[char])
+            else:
+                text.append(braille_dict_alpha_inverse[char])
             is_upper = False
 
     return ''.join(text)
