@@ -39,6 +39,7 @@
         5. [Listado de Herramientas y Tecnologías de Desarrollo](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/5-Herramientas_TecnologiasDeDesarrollo.pdf)
      
       - [Construcción y evolución de software](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software)
+        - [Lineas base del proyecto](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Lineas_base.md)
         - [Resultados Evaluación](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion)
            1. [Solicitud de cambio 1](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR_Formato_1.xlsx)
            2. [Solicitud de cambio 2](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR_Formato_2.xlsx)
