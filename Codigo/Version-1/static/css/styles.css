@@ -233,3 +233,23 @@ input:focus {
     outline: 2px solid #1e3a8a;
     outline-offset: 2px;
 }
+/* Estilos específicos para impresión */
+/**/
+/**/
+@media print {
+    body * {
+        display: none;
+    }
+
+    .printable {
+        display: block;
+        width: calc(210mm - 40mm); /* Ancho de una hoja A4 en mm menos márgenes */
+        height: calc(297mm - 40mm); /* Altura de una hoja A4 en mm menos márgenes */
+        margin: 20mm; /* Márgenes de 20mm */
+        padding: 0;
+        box-sizing: border-box;
+        page-break-inside: avoid; /* Evita saltos de página dentro del elemento */
+    }
+}
+/**/
+/**/
