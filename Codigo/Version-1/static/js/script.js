@@ -175,74 +175,41 @@ function copyText() {
     }
 }
 
-
-// Borra el texto del área de entrada
-function clearText() {
-    document.getElementById('input-text').value = '';
-    toggleTranslateButton(); // Actualizar el estado del botón de traducir
+/////////////
+// PDF
+function printPage() {
+    const resultContent = document.getElementById('resultText').innerHTML;
+    const printWindow = window.open('', '_blank', 'width=210mm,height=297mm');
+    printWindow.document.write('<html><head><title>Traducción realizada por: Fastbear Technologies</title>');
+    printWindow.document.write('<style>');
+    printWindow.document.write('@page { size: A4; margin: 25mm; }');
+    printWindow.document.write('body { font-family: Arial, sans-serif; padding: 20mm; margin: 0; box-sizing: border-box; }');
+    printWindow.document.write('.printable { width: calc(210mm - 40mm); height: calc(297mm - 40mm); margin: 0; padding: 0; page-break-inside: avoid; position: relative; font-size: 40px; }'); // Tamaño de fuente aumentado
+    printWindow.document.write('.footer { position: absolute; bottom: 10mm; width: 100%; text-align: center; font-size: 12px; }');
+    printWindow.document.write('</style>');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write('<div class="printable">' + resultContent + '</div>');
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
 }
 
-// Alterna el modo oscuro/claro
-function toggleDarkMode() {
-    var body = document.body;
-    var darkModeButton = document.getElementById('darkModeButton');
 
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-        darkModeButton.innerText = 'Modo Claro';
-    } else {
-        darkModeButton.innerText = 'Modo Oscuro';
-    }
-}
-// Descarga el resultado como un PDF
-async function downloadPDF() {
-    var resultTextElement = document.getElementById('resultText');
-    var resultText = resultTextElement.innerText;
 
-    var tempContainer = document.createElement('div');
-    tempContainer.style.position = 'fixed';
-    tempContainer.style.left = '-9999px';
-    tempContainer.style.top = '0';
-    tempContainer.style.width = '1000px'; // Asegura que el contenedor tenga un ancho suficiente
-    tempContainer.style.backgroundColor = '#ffffff'; // Fondo blanco para modo claro
-    tempContainer.style.padding = '20px';
-    tempContainer.style.fontSize = '80px'; // Tamaño de fuente aumentado
-    tempContainer.style.fontFamily = 'Arial, sans-serif';
-    tempContainer.style.color = '#000000';
-    tempContainer.innerText = resultText;
+///////////
 
-    document.body.appendChild(tempContainer);
 
-    try {
-        const canvas = await html2canvas(tempContainer);
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgData = canvas.toDataURL('image/png');
 
-        const imgWidth = 210; // Ancho de una hoja A4 en mm
-        const pageHeight = 295; // Altura de una hoja A4 en mm
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        let heightLeft = imgHeight;
 
-        let position = 0;
 
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
 
-        while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-        }
 
-        pdf.save('resultado.pdf');
-    } catch (error) {
-        console.error('Error generating PDF:', error);
-    } finally {
-        document.body.removeChild(tempContainer);
-    }
-}
+
+
+
+
+
+
 
 // Descarga el resultado como una imagen
 function downloadImage() {
