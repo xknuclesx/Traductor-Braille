@@ -39,6 +39,8 @@
         5. [Listado de Herramientas y Tecnologías de Desarrollo](Documentos/Versi%C3%B3n%201.0/Calidad-de-software/5-Herramientas_TecnologiasDeDesarrollo.pdf)
      
       - [Construcción y evolución de software](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software)
+        - [1. Solicitudes de cambio](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/1.SolicitudesDeCambio)  
+        - [2. Reportes de problemas](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/2.ReportesDeProblemas)  
         - [Lineas base del proyecto](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Lineas_base.md)
         - [Resultados Evaluación](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion)
            1. [Solicitud de cambio 1](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR_Formato_1.xlsx)
@@ -53,6 +55,7 @@
            10. [Reporte de problema 3](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/PR_Formato_3.xlsx)
            11. [Reporte de problema 4](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/PR_Formato_4.xlsx)
            12. [Reporte de problema 5](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/PR_Formato_5.xlsx)
+        
       
 
 ## Descripción del Proyecto
