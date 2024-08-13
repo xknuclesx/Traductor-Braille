@@ -40,7 +40,8 @@
      
       - [Construcción y evolución de software](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software)
         - [1. Solicitudes de cambio](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/1.SolicitudesDeCambio)  
-        - [2. Reportes de problemas](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/2.ReportesDeProblemas)  
+        - [2. Reportes de problemas](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/2.ReportesDeProblemas)
+        - [3. Reportes de cambios](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/3.%20Reporte%20de%20Cambios.pdf)  
         - [Lineas base del proyecto](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Lineas_base.md)
         - [Resultados Evaluación](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion)
            1. [Solicitud de cambio 1](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/CR_Formato_1.xlsx)
