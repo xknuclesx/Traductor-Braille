@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor Braille</title>
+    <!-- Enlace al archivo de estilos CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Bibliotecas externas de JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <h1>Traductor Braille</h1>
+
+        <!-- Sección de instrucciones -->
+        <div class="instructions">
+            <h2>Instrucciones</h2>
+            <p>1. Presione el método de traducción que requiere.</p>
+            <p>2. Ingrese el texto a traducir.</p>
+            <p>3. Presione el botón "Traducir".</p>
+            <p>4. El resultado se mostrará en la pantalla en la parte derecha del área de texto.</p>
+        </div>
+
+        <!-- Formulario para traducción -->
+        <form action="/translate" method="post" id="translateForm">
+            <input type="hidden" id="direction" name="direction" value="{{ direction }}">
+
+            <!-- Botones de selección de dirección de traducción -->
+            <div class="buttons">
+                <button type="button" id="text_to_braille" onclick="selectDirection('text_to_braille')" tabindex="0">Texto a Braille</button>
+                <button type="button" id="braille_to_text" onclick="selectDirection('braille_to_text')" tabindex="0">Braille a Texto</button>
+                <button type="button" id="text_to_braille_mirror" onclick="selectDirection('text_to_braille_mirror')" tabindex="0">Texto a Braille Espejo</button>
+            </div>
+
+            <!-- Botones de utilidades -->
+            <div class="utility-buttons">
+                <button type="button" onclick="copyText()" tabindex="0">Copiar Texto</button>
+                <button type="button" onclick="clearText()" tabindex="0">Borrar Texto</button>
+                <button type="button" id="darkModeButton" onclick="toggleDarkMode()" tabindex="0">Modo Claro</button>
+                <button type="button" onclick="zoomIn()" tabindex="0">Zoom In</button>
+                <button type="button" onclick="zoomOut()" tabindex="0">Zoom Out</button>
+            </div>
+
+            <!-- Área de texto de entrada y resultado -->
+            <div class="input-result-container disabled">
+                <textarea id="input-text" name="text" placeholder="Ingresa un texto, clic en el Botón" tabindex="0">{{ input_text }}</textarea>
+                <div class="result">
+                    <h2 class="result-title">Resultado:</h2>
+                    <p id="resultText" tabindex="0">{{ result }}</p>
+                </div>
+            </div>
+
+            <!-- Botones para traducir y descargar -->
+            <button type="button" class="translate-button disabled" onclick="submitForm()" tabindex="0" disabled>Traducir</button>
+            <button type="button" id="downloadPDFButton" class="hidden" onclick="downloadPDF()" tabindex="0">Descargar PDF</button>
+            <button type="button" id="downloadImageButton" class="hidden" onclick="downloadImage()" tabindex="0">Descargar Imagen</button>
+        </form>
+
+        <!-- Sección de teclado Braille -->
+        <div class="keyboard">
+            <h2>Teclado Braille</h2>
+            <div class="keyboard-container">
+                <div class="keyboard-rows">
+                    <h3>Caracteres especiales</h3>
+                    <div class="keyboard-row-specials">
+                        {% for char, braille in [('á', '⠷'), ('é', '⠮'), ('í', '⠌'), ('ó', '⠬'), ('ú', '⠾'), ('ü', '⠳'), ('ñ', '⠻'), (',', '⠂'), ('.', '⠄')] %}
+                        <div class="char-button" tabindex="0">
+                            <span class="char-ref">{{ char }}</span>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')" tabindex="0">{{ braille }}</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <h3>Caracteres alfabéticos</h3>
+                    <div class="keyboard-row-normals">
+                        {% for char, braille in [('Prefijo mayúsculas', '⠨'), ('a', '⠁'), ('b', '⠃'), ('c', '⠉'), ('d', '⠙'), ('e', '⠑'), ('f', '⠋'), ('g', '⠛'), ('h', '⠓'), ('i', '⠊'), ('j', '⠚'), ('k', '⠅'), ('l', '⠇'), ('m', '⠍'), ('n', '⠝'), ('o', '⠕'), ('p', '⠏'), ('q', '⠟'), ('r', '⠗'), ('s', '⠎'), ('t', '⠞'), ('u', '⠥'), ('v', '⠧'), ('w', '⠺'), ('x', '⠭'), ('y', '⠽'), ('z', '⠵')] %}
+                        <div class="char-button" tabindex="0">
+                            <span class="char-ref">{{ char }}</span>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')" tabindex="0">{{ braille }}</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <h3>Caracteres numéricos</h3>
+                    <div class="keyboard-row-numbers">
+                        {% for char, braille in [('Prefijo de un número', '⠼'), ('1', '⠁'), ('2', '⠃'), ('3', '⠉'), ('4', '⠙'), ('5', '⠑'), ('6', '⠋'), ('7', '⠛'), ('8', '⠓'), ('9', '⠊'), ('0', '⠚')] %}
+                        <div class="char-button" tabindex="0">
+                            <span class="char-ref">{{ char }}</span>
+                            <button type="button" onclick="insertCharacter('{{ braille }}')" tabindex="0">{{ braille }}</button>
+                        </div>
+                        {% endfor %}
+                        <div class="char-button" tabindex="0">
+                            <span class="char-ref">Espacio</span>
+                            <button type="button" onclick="insertCharacter(' ')" tabindex="0">␣</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Enlace al archivo JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
