@@ -56,8 +56,19 @@
            10. [Reporte de problema 3](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/PR_Formato_3.xlsx)
            11. [Reporte de problema 4](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/PR_Formato_4.xlsx)
            12. [Reporte de problema 5](Documentos/Versi%C3%B3n%201.0/Construccion-y-evolucion-de-software/Resultados-Evaluacion/PR_Formato_5.xlsx)
-        
-      
+
+     - [Versión Final](Documentos/Versi%C3%B3n%20Final).
+       1. [Componentes de Software](Documentos/Versi%C3%B3n%20Final/Componentes%20de%20Software.docx)
+       2. [Diseño de Software](Documentos/Versi%C3%B3n%20Final/Diseño%20de%20Software.docx)
+       3. [Especificación de requerimientos](Documentos/Versi%C3%B3n%20Final/Especificaci%C3%B3n%20de%20requerimientos.docx)
+       4. [Manual de Usuario](Documentos/Versi%C3%B3n%20Final/Manual%20de%20Usuario.docx)
+       5. [Pedidos de Cambio](Documentos/Versi%C3%B3n%20Final/Pedidos%20de%20Cambio.docx)
+       6. [Plan de Iteración Final](Documentos/Versi%C3%B3n%20Final/Plan%20de%20Iteraci%C3%B3n%20Final.docx)
+       7. [Reporte SonarQube](Documentos/Versi%C3%B3n%20Final/Reporte%20SonarQube.pdf)
+       8. [Reporte de Mediciones de la Iteración Final](Documentos/Versi%C3%B3n%20Final/Reporte%20de%20Mediciones%20de%20la%20Iteraci%C3%B3n%20Final.docx)
+       9. [Resultados de casos de prueba y pruebas automatizadas](Documentos/Versi%C3%B3n%20Final/Resultados%20de%20casos%20de%20prueba%20y%20pruebas%20automatizadas.pdf)
+       10. [Resultados del Cuestionario SUS](Documentos/Versi%C3%B3n%20Final/Resultados%20del%20Cuestionario%20SUS.docx)
+       
 
 ## Descripción del Proyecto
 
