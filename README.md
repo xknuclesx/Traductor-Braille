@@ -3,7 +3,7 @@
 ## Índice
 
 ### [Código](Codigo)
-  - [Versión 1](Codigo/Version-1)
+  - [Versión Final](Codigo/Version-1)
       - [static/css](Codigo/Version-1/static/css)
       - [static/js](Codigo/Version-1/static/js)
       - [templates](Codigo/Version-1/templates)
